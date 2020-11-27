@@ -26,7 +26,6 @@ class Standar extends CI_Controller
         $parent = 1;
         foreach ($group_default as $value) {
             $standar = $value->nama_standar;
-            $parent = $parent;
             $level = '2';
             $data_standar = $this->model_standar->get_data_standar($parent, $level);
             array_push($list_data, array('standar' => $standar, 'sub_standar' => $data_standar));
