@@ -2,27 +2,24 @@
 <hr>
 <?php
 $marginleft = 48;
-
-foreach ($group_list as $value) {
+foreach ($list_standar as $value) {
     echo '
     <div class="media border p-3 mb-2">
         <div class="media-body">
             <div class="row">
                 <div class="col-sm-10">
-                    <h4><b> Parent Standar : ' . $value->parent_standar . '</b></h4>
+                    <h4><b>Standar : ' . $value['standar'] . '</b></h4>
                 </div>
             </div>
         </div>
     </div>';
-    $list_standar = $controller->get_data_standar($value->parent_standar);
-    foreach ($list_standar as $data) {
+    foreach ($value['sub_standar'] as $data) {
         echo '
         <div class="media border p-3 mb-2" style="margin-left:' . $marginleft . 'px">
             <div class="media-body">
                 <div class="row">
                     <div class="col-sm-10">
-                        <br> <small> Level Standar <i>' . $data->level_standar . '</i></small></h4>
-                        <p> Standar : ' . $data->nama_standar . '</p>
+                        <p> Nama Standar : ' . $data->nama_standar . '</p>
                     </div>
                 </div>
             </div>

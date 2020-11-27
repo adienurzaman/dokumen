@@ -13,16 +13,26 @@ class Standar extends CI_Controller
     public function index()
     {
         $data = array(
-            'controller' => $this,
-            'group_list' => $this->model_standar->group_dt_parent(),
+            'list_standar' => $this->get_all_data(),
             'view' => 'standar_view'
         );
         $this->load->view('layout/master', $data);
     }
 
-    public function get_data_standar($parent_id)
+    private function get_all_data()
     {
-        return $this->model_standar->get_data_standar($parent_id);
+        $list_data = array();
+        $group_default = $this->model_standar->query_dt_default();
+        $parent = 1;
+        foreach ($group_default as $value) {
+            $standar = $value->nama_standar;
+            $parent = $parent;
+            $level = '2';
+            $data_standar = $this->model_standar->get_data_standar($parent, $level);
+            array_push($list_data, array('standar' => $standar, 'sub_standar' => $data_standar));
+            $parent++;
+        }
+        return $list_data;
     }
 }
 
