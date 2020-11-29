@@ -82,9 +82,9 @@ echo '<ul class="sitemap">';
 #standar
 foreach ($list_standar as $standar) {
     if (!empty($standar['sub_standar'])) {
-        echo '<li><a href="" class="open font-weight-bold">Standar ' . $standar['id_standar'] . ' : ' . $standar['standar'] . '</a>';
+        echo '<li><a href="" class="open font-weight-bold">' . $standar['standar'] . '</a>';
     } else {
-        echo '<li><a href="" class="font-weight-bold">Standar ' . $standar['id_standar'] . ' : ' . $standar['standar'] . '</a>';
+        echo '<li><a href="" class="font-weight-bold">' . $standar['standar'] . '</a>';
     }
     #sub_standar
     if (isset($standar['sub_standar'])) {
