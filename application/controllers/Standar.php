@@ -15,7 +15,7 @@ class Standar extends CI_Controller
         $data = array(
             'controller' => $this,
             'list_standar' => $this->get_all_data(),
-            'view' => 'standar_view'
+            'view' => 'standar_view_v2'
         );
         $this->load->view('layout/master', $data);
     }
@@ -28,7 +28,7 @@ class Standar extends CI_Controller
             $parent = $dt->id_standar;
             $standar = $dt->nama_standar;
             $sub_standar = $this->model_standar->get_data_standar($parent, '2');
-            array_push($list_data, array('standar' => $standar, 'sub_standar' => $sub_standar));
+            array_push($list_data, array('id_standar' => $parent, 'standar' => $standar, 'sub_standar' => $sub_standar));
         }
         return $list_data;
     }
