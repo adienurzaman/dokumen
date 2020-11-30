@@ -6,4 +6,5 @@
     <title>Dokumen Akred</title>
     <!-- Csrf Token -->
     <link rel="stylesheet" href="<?= base_url(); ?>public/css/bootstrap.min.css">
+    <script src="<?= base_url(); ?>public/js/jquery.min.js"></script>
 </head>

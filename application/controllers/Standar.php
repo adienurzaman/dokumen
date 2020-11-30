@@ -7,12 +7,16 @@ class Standar extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->userdata('token')) {
+            redirect('auth');
+        }
         $this->load->model('model_standar');
     }
 
     public function index()
     {
         $data = array(
+            'session' => $this->session->all_userdata(),
             'controller' => $this,
             'list_standar' => $this->get_all_data(),
             'view' => 'standar_view_v2'

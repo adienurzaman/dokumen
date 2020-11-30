@@ -4,7 +4,7 @@
 
 <body>
     <nav class="navbar navbar-dark bg-info fixed-top">
-        <a class="navbar-brand" href="index.php" style="color: #fff;">
+        <a class="navbar-brand" href="<?= base_url('dashboard'); ?>" style="color: #fff;">
             Dokumen Unma
         </a>
     </nav>
