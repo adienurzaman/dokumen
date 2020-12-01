@@ -71,7 +71,7 @@ class Google
 		$files = $this->service->files->listFiles(array());
 		return $files->getFiles();
 	}
-	// 1gAkeW7whxS9qLBz9PVh0v02HE6cYi36P
+
 	public function get_file($fileId)
 	{
 		try {
