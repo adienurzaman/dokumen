@@ -45,7 +45,7 @@ class Upload extends CI_Controller
         /* METHOD UPLOAD FILE */
         $config = array(
             'upload_path'   => './public/upload/',
-            'allowed_types' => 'pdf|jpg|png|xls|xlxs|gif|doc|docs',
+            'allowed_types' => 'pdf|jpg|png|xls|xlxs|gif|doc|docs|mp4',
             'max_size'        => '100000',
             'overwrite'     => 1
         );
