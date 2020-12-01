@@ -68,42 +68,50 @@ class Google
 
 	public function getAllFiles()
 	{
-		// Print the names and IDs for up to 10 files.
-		// $parameters = array(
-		// 	$parameters['pageToken'] = $pageToken;
-		// );
+		$files = $this->service->files->listFiles(array());
+		return $files->getFiles();
+	}
+	// 1gAkeW7whxS9qLBz9PVh0v02HE6cYi36P
+	public function get_file($fileId)
+	{
+		try {
+			$file = $this->service->files->get($fileId);
 
-		// $results = $this->service->files->listFiles($parameters);
-		// $pageToken = $results->getNextPageToken();
-		// if (count($results->getItems()) == 0) {
-		// 	echo "No files are stored in your Google Drive.\n";
-		// } else {
+			print "Title: " . $file->getName();
+			print "<br>Url: " . $file->getWebContentLink();
+			print "<br> Description: " . $file->getDescription();
+			print "<br> MIME type: " . $file->getMimeType();
+		} catch (Exception $e) {
+			print "An error occurred: " . $e->getMessage();
+		}
+	}
 
-		// 	echo "<br />Files:<br />";
-
-		// 	foreach ($results->getItems() as $file) {
-		// 		echo "File ID => " . $file->getId() . " , Title => " . $file->getTitle() . '<br /><br />';
-		// 	}
-		// }
-		$result = array();
-		$pageToken = NULL;
-
-		do {
-			try {
-				$parameters = array();
-				if ($pageToken) {
-					$parameters['pageToken'] = $pageToken;
-				}
-				$files = $this->service->files->listFiles($parameters);
-
-				$result = array_push($result, $files->getItems());
-				$pageToken = $files->getNextPageToken();
-			} catch (Exception $e) {
-				print "An error occurred: " . $e->getMessage();
-				$pageToken = NULL;
+	public function delete_file($fileId)
+	{
+		try {
+			$file = $this->service->files->delete($fileId);
+			if ($file) {
+				return true;
+			} else {
+				return false;
 			}
-		} while ($pageToken);
-		return $pageToken;
+		} catch (Exception $e) {
+			print "An error occurred: " . $e->getMessage();
+		}
+	}
+
+	public function download_file($fileId)
+	{
+		try {
+			$file = $this->service->files->delete($fileId);
+			if ($file) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception $e) {
+			print "An error occurred: " . $e->getMessage();
+		}
 	}
 }
 

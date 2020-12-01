@@ -7,10 +7,16 @@ class Upload extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('google');
         if (!$this->session->userdata('token')) {
             redirect('auth');
         }
-        $this->load->library('google');
+        if (!empty($_SESSION['upload_token'])) {
+            $this->client->setAccessToken($this->session->userdata('token'));
+            if ($this->client->isAccessTokenExpired()) {
+                $this->session->unset_userdata('token');
+            }
+        }
     }
 
     public function index()
@@ -22,11 +28,11 @@ class Upload extends CI_Controller
             $view_embed = 'list';
         }
 
-        // var_dump($this->google->getAllFiles());
-        // die;
+        $this->google->setAccessToken($this->session->userdata('token'));
+        $this->google->getAccessToken();
 
         $data = array(
-            // 'allFiles' => $this->google->getAllFiles(),
+            'allFiles' => $this->google->getAllFiles(),
             'view_embed' => $view_embed,
             'session' => $this->session->all_userdata(),
             'view' => 'upload_data'
@@ -68,7 +74,7 @@ class Upload extends CI_Controller
                         unlink($file);
                     }
                 }
-                $this->session->set_flashdata('pesan', 'Upload data ' . $result->name . ' berhasil, cek google drive anda');
+                $this->session->set_flashdata('pesan', 'ID : ' . $result->id . ' Upload data ' . $result->name . ' berhasil, cek google drive anda');
                 redirect('upload');
             } else {
                 # hapus semua data upload lokal
@@ -78,11 +84,26 @@ class Upload extends CI_Controller
                         unlink($file);
                     }
                 }
-                $this->session->set_flashdata('pesan', 'Gagal Upload ' . $result->name . ' ke drive gagal');
+                $this->session->set_flashdata('pesan', 'ID : ' . $result->id . 'Gagal Upload ' . $result->name . ' ke drive gagal');
                 redirect('upload');
             }
         } else {
             $this->session->set_flashdata('pesan', 'Upload gagal. File corrupt');
+            redirect('upload');
+        }
+    }
+
+    public function delete_file($fileId)
+    {
+        $this->google->setAccessToken($this->session->userdata('token'));
+        $this->google->getAccessToken();
+
+        $aksi = $this->google->delete_file($fileId);
+        if ($aksi) {
+            $this->session->set_flashdata('pesan', 'Delete berhasil. Cek google drive');
+            redirect('upload');
+        } else {
+            $this->session->set_flashdata('pesan', 'Delete gagal. Cek google drive');
             redirect('upload');
         }
     }

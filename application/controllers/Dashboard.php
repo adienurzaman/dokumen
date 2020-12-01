@@ -7,10 +7,16 @@ class Dashboard extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('google');
         if (!$this->session->userdata('token')) {
             redirect('auth');
         }
-        $this->load->library('google');
+        if (!empty($_SESSION['upload_token'])) {
+            $this->client->setAccessToken($this->session->userdata('token'));
+            if ($this->client->isAccessTokenExpired()) {
+                $this->session->unset_userdata('token');
+            }
+        }
     }
 
     public function index()
