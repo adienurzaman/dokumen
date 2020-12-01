@@ -11,9 +11,9 @@ class Dashboard extends CI_Controller
         if (!$this->session->userdata('token')) {
             redirect('auth');
         }
-        if (!empty($_SESSION['upload_token'])) {
-            $this->client->setAccessToken($this->session->userdata('token'));
-            if ($this->client->isAccessTokenExpired()) {
+        if (!empty($_SESSION['token'])) {
+            $this->google->setAccessToken($this->session->userdata('token'));
+            if ($this->google->isAccessTokenExpired()) {
                 $this->session->unset_userdata('token');
             }
         }

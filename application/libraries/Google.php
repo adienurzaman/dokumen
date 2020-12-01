@@ -5,7 +5,7 @@ class Google
 {
 	public function __construct()
 	{
-		require 'public/vendor/autoload.php';
+		require './vendor/autoload.php';
 		$scope = array(
 			"https://www.googleapis.com/auth/drive",
 			"https://www.googleapis.com/auth/drive.file",
@@ -43,6 +43,11 @@ class Google
 		return $this->client->getAccessToken();
 	}
 
+	public function isAccessTokenExpired()
+	{
+		return $this->client->isAccessTokenExpired();
+	}
+
 	public function file_set_name($nama_file)
 	{
 		return $this->file->setName($nama_file);
@@ -68,7 +73,11 @@ class Google
 
 	public function getAllFiles()
 	{
-		$files = $this->service->files->listFiles(array());
+		$id = "1N0cKQ7rnANbCTIBiOQL9Y0pEznrOd43C";
+		$parameter = array(
+			'q' => "'" . $id . "' in parents"
+		);
+		$files = $this->service->files->listFiles($parameter);
 		return $files->getFiles();
 	}
 

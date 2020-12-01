@@ -11,9 +11,9 @@ class Standar extends CI_Controller
             redirect('auth');
         }
         $this->load->library('google');
-        if (!empty($_SESSION['upload_token'])) {
-            $this->client->setAccessToken($this->session->userdata('token'));
-            if ($this->client->isAccessTokenExpired()) {
+        if (!empty($_SESSION['token'])) {
+            $this->google->setAccessToken($this->session->userdata('token'));
+            if ($this->google->isAccessTokenExpired()) {
                 $this->session->unset_userdata('token');
             }
         }
