@@ -17,6 +17,8 @@ class Upload extends CI_Controller
                 $this->session->unset_userdata('token');
             }
         }
+        $this->google->setAccessToken($this->session->userdata('token'));
+        $this->google->getAccessToken();
     }
 
     public function index()
@@ -27,9 +29,6 @@ class Upload extends CI_Controller
         } else {
             $view_embed = 'list';
         }
-
-        $this->google->setAccessToken($this->session->userdata('token'));
-        $this->google->getAccessToken();
         $data = array(
             'allFiles' => $this->google->getAllFiles(),
             'view_embed' => $view_embed,
@@ -94,9 +93,6 @@ class Upload extends CI_Controller
 
     public function delete_file($fileId)
     {
-        $this->google->setAccessToken($this->session->userdata('token'));
-        $this->google->getAccessToken();
-
         $aksi = $this->google->delete_file($fileId);
         if ($aksi) {
             $this->session->set_flashdata('pesan', 'Delete berhasil. Cek google drive');
