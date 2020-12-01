@@ -24,10 +24,10 @@ class Upload extends CI_Controller
     public function index()
     {
         $view_embed = "";
-        if ($this->input->get('v') == 'grid') {
-            $view_embed = 'grid';
-        } else {
+        if ($this->input->get('v') == 'list') {
             $view_embed = 'list';
+        } else {
+            $view_embed = 'grid';
         }
         $data = array(
             'allFiles' => $this->google->getAllFiles(),
