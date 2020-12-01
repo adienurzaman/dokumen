@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2020 at 04:47 PM
+-- Generation Time: Dec 01, 2020 at 01:26 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -20,33 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_iqbal`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dokumen_akreditasi`
---
-
-CREATE TABLE `dokumen_akreditasi` (
-  `id_dokumen` int(11) NOT NULL,
-  `id_standar` int(11) NOT NULL,
-  `id_sesi` int(11) NOT NULL,
-  `url_dokumen` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sesi_akreditasi`
---
-
-CREATE TABLE `sesi_akreditasi` (
-  `id_sesi` int(11) NOT NULL,
-  `kode_prodi` int(11) NOT NULL,
-  `tahun_akreditasi` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -68,7 +41,7 @@ CREATE TABLE `standar` (
 INSERT INTO `standar` (`id_standar`, `parent_standar`, `level_standar`, `nama_standar`) VALUES
 (1, 0, 1, 'VISI, MISI, TUJUAN DAN STRATEGI'),
 (2, 0, 1, 'TATA PAMONG, TATA KELOLA, DAN KERJASAMA'),
-(3, 0, 1, 'MAHASISWA '),
+(3, 0, 1, 'MAHASISWA'),
 (4, 0, 1, 'SUMBER DAYA MANUSIA '),
 (5, 0, 1, 'KEUANGAN, SARANA DAN PRASARANA'),
 (6, 0, 1, 'PENDIDIKAN '),
@@ -96,18 +69,18 @@ INSERT INTO `standar` (`id_standar`, `parent_standar`, `level_standar`, `nama_st
 (28, 2, 2, 'Indikator Kinerja Utama'),
 (29, 2, 2, 'Indikator Kinerja Tambahan'),
 (30, 2, 2, 'Evaluasi Capaian Kinerja'),
-(31, 2, 2, 'Penjaminan Mutu Tata Pamong, Tata Kelola, dan Kerjasama'),
+(31, 2, 2, 'Penjaminan Mutu Tata Pamong, Tata Kelola, dan\r\nKerjasama'),
 (32, 2, 2, 'Kepuasan Pengguna'),
 (33, 2, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
-(34, 3, 2, 'Tabel 2.a. Seleksi Mahasiswa'),
-(35, 3, 2, 'Tabel 2.b. Mahasiswa Asing'),
+(34, 3, 2, 'Tabel 2.a Seleksi Mahasiswa'),
+(35, 3, 2, 'Tabel 2.b Mahasiswa Asing'),
 (36, 3, 2, 'Latar Belakang'),
 (37, 3, 2, 'Kebijakan'),
 (38, 3, 2, 'Standar Perguruan Tinggi dan Strategi Pencapaian'),
 (39, 3, 2, 'Indikator Kinerja Utama'),
 (40, 3, 2, 'Indikator Kinerja Tambahan'),
 (41, 3, 2, 'Evaluasi Capaian Kinerja'),
-(42, 3, 2, 'Penjaminan Mutu Mahasiswa'),
+(42, 3, 2, 'Penjaminaan Mutu Mahasiswa'),
 (43, 3, 2, 'Kepuasan Pengguna'),
 (44, 3, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
 (45, 4, 2, 'Tabel 3.a.1) Dosen Tetap Perguruan Tinggi yang ditugaskan sebagai pengampu mata kuliah di Program Studi yang diakreditasi '),
@@ -120,32 +93,80 @@ INSERT INTO `standar` (`id_standar`, `parent_standar`, `level_standar`, `nama_st
 (52, 4, 2, 'Tabel 3.b.4) Publikasi Ilmiah DTPS '),
 (53, 4, 2, 'Tabel 3.b.5) Karya ilmiah DTPS yang disitasi dalam 3 tahun terakhir '),
 (54, 4, 2, 'Tabel 3.b.7) Luaran Penelitian/PkM Lainnya oleh DTPS'),
-(55, 4, 2, 'Latar Belakang'),
-(56, 4, 2, 'Kebijakan'),
+(55, 4, 2, 'Latar Belakang '),
+(56, 4, 2, 'Kebijakan '),
 (57, 4, 2, 'Standar Perguruan Tinggi dan Strategi Pencapaian'),
 (58, 4, 2, 'Indikator Kinerja Utama'),
 (59, 4, 2, 'Indikator Kinerja Tambahan'),
 (60, 4, 2, 'Evaluasi Capaian Kinerja'),
-(61, 4, 2, 'Penjaminan Mutu SDM'),
+(61, 4, 2, 'Penjaminaan Mutu SDM'),
 (62, 4, 2, 'Kepuasan Pengguna'),
 (63, 4, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
-(64, 5, 2, 'Tabel 4 Penggunaan Dana ');
+(64, 5, 2, 'Tabel 4 Penggunaan Dana '),
+(65, 5, 2, 'Latar Belakang'),
+(66, 5, 2, 'Kebijakan'),
+(67, 5, 2, 'Standar Perguruan Tinggi dan Strategi Pencapaian'),
+(68, 5, 2, 'Indikator Kinerja Utama'),
+(69, 5, 2, 'Indikator Kinerja Tambahan'),
+(70, 5, 2, 'Evaluasi Capaian Kinerja'),
+(71, 5, 2, 'Penjaminaan Mutu Keuangan dan Sarpras'),
+(72, 5, 2, 'Kepuasan Pengguna'),
+(73, 5, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
+(74, 6, 2, 'Tabel 5.a Kurikulum, Capaian Pembelajaran, dan Rencana Pembelajaran '),
+(75, 6, 2, 'Tabel 5.b Integrasi Kegiatan Penelitian/PkM dalam Pembelajaran '),
+(76, 6, 2, 'Tabel 5.c Kepuasan Mahasiswa '),
+(77, 6, 2, 'Latar Belakang'),
+(78, 6, 2, 'Kebijakan'),
+(79, 6, 2, 'Standar Perguruan Tinggi dan Strategi Pencapaian'),
+(80, 6, 2, 'Indikator Kinerja Utama'),
+(81, 6, 2, 'Indikator Kinerja Tambahan'),
+(82, 6, 2, 'Evaluasi Capaian Kinerja'),
+(83, 6, 2, 'Penjaminaan Mutu Pendidikan'),
+(84, 6, 2, 'Kepuasan Pengguna'),
+(85, 6, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
+(86, 7, 2, ' Tabel 6.a Penelitian DTPS yang melibatkan mahasiswa'),
+(87, 7, 2, 'Tabel 6.b Penelitian DTPS yang menjadi rujukan tema tesis/disertasi'),
+(88, 7, 2, 'Latar Belakang'),
+(89, 7, 2, 'Kebijakan'),
+(90, 7, 2, 'Standar Perguruan Tinggi dan Strategi Pencapaian'),
+(91, 7, 2, 'Indikator Kinerja Utama'),
+(92, 7, 2, 'Indikator Kinerja Tambahan'),
+(93, 7, 2, 'Evaluasi Capaian Kinerja'),
+(94, 7, 2, 'Penjaminaan Mutu Penelitian'),
+(95, 7, 2, 'Kepuasan Pengguna'),
+(96, 7, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
+(97, 8, 2, 'Tabel 7. PkM DTPS yang melibatkan mahasiswa'),
+(98, 8, 2, 'Latar Belakang'),
+(99, 8, 2, 'Kebijakan'),
+(100, 8, 2, 'Standar Perguruan Tinggi dan Strategi Pencapaian'),
+(101, 8, 2, 'Indikator Kinerja Utama'),
+(102, 8, 2, 'Indikator Kinerja Tambahan'),
+(103, 8, 2, 'Evaluasi Capaian Kinerja'),
+(104, 8, 2, 'Penjaminaan Mutu Pengabdian'),
+(105, 8, 2, 'Kepuasan Pengguna'),
+(106, 8, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
+(107, 9, 2, 'Tabel 8.a IPK Lulusan'),
+(108, 9, 2, 'Tabel 8.b.1) Prestasi Akademik'),
+(109, 9, 2, 'Tabel 8.b.2) Prestasi Nonakademik Mahasiswa'),
+(110, 9, 2, 'Tabel 8.c. Masa Studi Lulusan Program Studi'),
+(111, 9, 2, 'Tabel 8.d.1) Waktu Tunggu Lulusan'),
+(112, 9, 2, 'Tabel 8.d.2) Kesesuaian Bidang Kerja Lulusan'),
+(113, 9, 2, 'Tabel 8.e.1) Tempat Kerja Lulusan'),
+(114, 9, 2, 'Tabel 8.e.2) Kepuasan Pengguna'),
+(115, 9, 2, 'Tabel 8.f.1) Publikasi Ilmiah mahasiswa'),
+(116, 9, 2, 'Tabel 8.f.2) Karya ilmiah mahasiswa yang disitasi'),
+(117, 9, 2, 'Tabel 8.f.4) Luaran penelitian/PkM yang dihasilkan mahasiswa'),
+(118, 9, 2, 'Indikator Kinerja Utama'),
+(119, 9, 2, 'Indikator Kinerja Tambahan'),
+(120, 9, 2, 'Evaluasi Capaian Kinerja'),
+(121, 9, 2, 'Penjaminaan Mutu SDM'),
+(122, 9, 2, 'Kepuasan Pengguna'),
+(123, 9, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
+(124, 0, 1, 'LUARAN DAN CAPAIAN TRIDHARMA 2');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `dokumen_akreditasi`
---
-ALTER TABLE `dokumen_akreditasi`
-  ADD PRIMARY KEY (`id_dokumen`);
-
---
--- Indexes for table `sesi_akreditasi`
---
-ALTER TABLE `sesi_akreditasi`
-  ADD PRIMARY KEY (`id_sesi`);
 
 --
 -- Indexes for table `standar`
@@ -158,22 +179,10 @@ ALTER TABLE `standar`
 --
 
 --
--- AUTO_INCREMENT for table `dokumen_akreditasi`
---
-ALTER TABLE `dokumen_akreditasi`
-  MODIFY `id_dokumen` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `sesi_akreditasi`
---
-ALTER TABLE `sesi_akreditasi`
-  MODIFY `id_sesi` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `standar`
 --
 ALTER TABLE `standar`
-  MODIFY `id_standar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id_standar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
