@@ -1,4 +1,5 @@
 <a class="btn btn-primary" data-toggle="modal" data-target="#modalAdd">Tambah Sesi</a>
+<a class="btn btn-warning" onclick="javascript:return window.history.back();">Kembali</a>
 
 <!-- Response tabel dari ajax/xhr request -->
 <div id="areaTabelSesi" class="mb-3 mt-2"></div>
