@@ -18,6 +18,15 @@
         </div>
     </div>
     <div class="card mb-4 shadow-sm card-kelas">
+        <div class="card-header bg-info">
+            <h2 class="my-0 font-weight-normal text-white">PENGATURAN</h2>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title pricing-card-title">Sesi</h4>
+            <a href="<?= base_url('sesi'); ?>" class="btn btn-lg btn-block btn-info">Pilih</a>
+        </div>
+    </div>
+    <div class="card mb-4 shadow-sm card-kelas">
         <div class="card-header bg-warning">
             <h2 class="my-0 font-weight-normal text-white">PENGATURAN</h2>
         </div>

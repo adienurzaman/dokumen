@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2020 at 01:26 AM
+-- Generation Time: Dec 02, 2020 at 08:23 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_iqbal`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sesi`
+--
+
+CREATE TABLE `sesi` (
+  `id_sesi` int(11) NOT NULL,
+  `kode_prodi` int(11) NOT NULL,
+  `tahun_akreditasi` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -161,12 +173,17 @@ INSERT INTO `standar` (`id_standar`, `parent_standar`, `level_standar`, `nama_st
 (120, 9, 2, 'Evaluasi Capaian Kinerja'),
 (121, 9, 2, 'Penjaminaan Mutu SDM'),
 (122, 9, 2, 'Kepuasan Pengguna'),
-(123, 9, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut'),
-(124, 0, 1, 'LUARAN DAN CAPAIAN TRIDHARMA 2');
+(123, 9, 2, 'Kesimpulan Hasil Evaluasi Ketercapaian dan Tindak Lanjut');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `sesi`
+--
+ALTER TABLE `sesi`
+  ADD PRIMARY KEY (`id_sesi`);
 
 --
 -- Indexes for table `standar`
@@ -177,6 +194,12 @@ ALTER TABLE `standar`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `sesi`
+--
+ALTER TABLE `sesi`
+  MODIFY `id_sesi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `standar`
