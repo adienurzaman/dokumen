@@ -75,9 +75,7 @@
         background: url('https://dokumen.unma.ac.id/assets/btn/bullet4-open.png') no-repeat 90px 0;
     }
 </style>
-<h2 align="center" style="margin: 60px 10px 10px 10px;">View Data Standar</h2>
-<hr>
-<a href="<?= base_url('dashboard'); ?>" class="btn btn-warning float-left">
+<a onclick="javascript:return window.history.back();" class="btn btn-warning float-left">
     Kembali
 </a>
 <br>

@@ -1,5 +1,3 @@
-<h2 align="center" style="margin: 60px 10px 10px 10px;">Landing Page</h2>
-<hr>
 <div class="card-deck mt-1 mb-3 text-center" id="carddata">
     <div class="card mb-4 shadow-sm card-kelas">
         <div class="card-header bg-info">

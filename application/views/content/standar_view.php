@@ -1,5 +1,3 @@
-<h2 align="center" style="margin: 60px 10px 10px 10px;">Contoh TreeView Data Standar</h2>
-<hr>
 <?php
 $marginleft = 48;
 $marginleft_2 = $marginleft + 48;
@@ -45,4 +43,3 @@ foreach ($list_standar as $standar) {
         }
     }
 }
-?>

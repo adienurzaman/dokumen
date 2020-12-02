@@ -8,7 +8,8 @@
             Dokumen Unma
         </a>
     </nav>
-    <div class="container mb-3">
+    <div class="container mb-5">
+        <div style="margin: 100px 10px 10px 10px;"></div>
         <?php $this->load->view('content/' . $view); ?>
     </div>
 </body>

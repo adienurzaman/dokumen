@@ -7,13 +7,11 @@
         width: 100%;
     }
 </style>
-<h2 align="center" style="margin: 60px 10px 10px 10px;">Upload Page</h2>
-<hr>
-<a href="<?= base_url('dashboard'); ?>" class="btn btn-warning float-left">
+<a onclick="javascript:return window.history.back();" class="btn btn-warning float-left">
     Kembali
 </a>
 <div class="flashdata" data-pesan="<?= $this->session->flashdata('pesan'); ?>"></div>
-<div class="card w-50 mx-auto">
+<div class="card mx-auto">
     <div class="card-header bg-info">
         <h4 class="text-light"><strong>UPLOAD DATA</strong></h4>
     </div>
