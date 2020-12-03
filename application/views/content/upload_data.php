@@ -7,9 +7,11 @@
         width: 100%;
     }
 </style>
-<a onclick="javascript:return window.history.back();" class="btn btn-warning float-left">
+<a onclick="javascript:return window.history.back();" class="btn btn-warning">
     Kembali
 </a>
+<br>
+<br>
 <div class="flashdata" data-pesan="<?= $this->session->flashdata('pesan'); ?>"></div>
 <div class="card mx-auto">
     <div class="card-header bg-info">
