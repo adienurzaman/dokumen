@@ -139,14 +139,14 @@
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        tampil_tabel_standar();
+                        location.reload();
                     } else {
                         toastr.warning(response.pesan + '. ', 'Informasi', {
                             "showMethod": "slideDown",
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        tampil_tabel_standar();
+                        location.reload();
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -233,14 +233,14 @@
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        tampil_tabel_standar();
+                        location.reload();
                     } else {
                         toastr.warning(response.pesan + '. ', 'Informasi', {
                             "showMethod": "slideDown",
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        tampil_tabel_standar();
+                        location.reload();
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
