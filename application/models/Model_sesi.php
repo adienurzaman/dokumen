@@ -19,8 +19,8 @@ class Model_sesi extends CI_Model
     public function query_save_dt_sesi()
     {
         $data = array(
-            'kode_prodi' => $this->input->post('kode_prodi'),
-            'tahun_akreditasi' => $this->input->post('tahun_akreditasi')
+            'kode_prodi' => $this->input->post('kode_prodi', true),
+            'tahun_akreditasi' => $this->input->post('tahun_akreditasi', true)
         );
         if ($this->db->insert('sesi', $data)) {
             return true;
@@ -32,10 +32,10 @@ class Model_sesi extends CI_Model
     public function query_edit_dt_sesi()
     {
         $data = array(
-            'kode_prodi' => $this->input->post('kode_prodi'),
-            'tahun_akreditasi' => $this->input->post('tahun_akreditasi')
+            'kode_prodi' => $this->input->post('kode_prodi', true),
+            'tahun_akreditasi' => $this->input->post('tahun_akreditasi', true)
         );
-        $this->db->where('id_sesi', $this->input->post('id_sesi'));
+        $this->db->where('id_sesi', $this->input->post('id_sesi', true));
         $query = $this->db->update('sesi', $data);
         if ($query) {
             return true;

@@ -4,6 +4,7 @@
             <tr>
                 <th>No</th>
                 <th>Kode Prodi</th>
+                <th>Nama Prodi</th>
                 <th>Tahun Akreditasi</th>
                 <th>Aksi</th>
             </tr>
@@ -17,11 +18,12 @@
             ?>
                     <tr>
                         <td><?= $no++; ?></td>
-                        <td><?= $value->kode_prodi; ?></td>
-                        <td><?= $value->tahun_akreditasi; ?></td>
+                        <td><?= $value['kode_prodi']; ?></td>
+                        <td><?= $value['nama_prodi']; ?></td>
+                        <td><?= $value['tahun_akreditasi']; ?></td>
                         <td>
-                            <a class="btn btn-success" onclick="ubah(<?= $value->id_sesi; ?>)">Edit</a>
-                            <a class="btn btn-danger" onclick="hapus(<?= $value->id_sesi; ?>)">Hapus</a>
+                            <a class="btn btn-success" onclick="ubah(<?= $value['id_sesi']; ?>)">Edit</a>
+                            <a class="btn btn-danger" onclick="hapus(<?= $value['id_sesi']; ?>)">Hapus</a>
                         </td>
                     </tr>
                 <?php

@@ -22,7 +22,21 @@ class Sesi extends CI_Controller
     {
         #ambil data
         $query = $this->model_sesi->get_dt_sesi();
-        $data = array('data_sesi' => $query->result());
+        $data_sesi = array();
+        $url = 'https://data.unma.ac.id/ref/prodi';
+        foreach ($query->result() as $value) {
+            $output_url = file_get_contents($url . '?kode_prodi=' . $value->kode_prodi);
+            foreach (json_decode($output_url) as $output) {
+                $push_data = array(
+                    'id_sesi' => $value->id_sesi,
+                    'kode_prodi' => $value->kode_prodi,
+                    'nama_prodi' => $output->nama_prodi,
+                    'tahun_akreditasi' => $value->tahun_akreditasi
+                );
+                array_push($data_sesi, $push_data);
+            }
+        }
+        $data = array('data_sesi' => $data_sesi);
         $this->load->view('content/tabel_sesi', $data);
     }
 

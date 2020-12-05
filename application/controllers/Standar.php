@@ -20,7 +20,105 @@ class Standar extends CI_Controller
         $this->load->model('model_standar');
     }
 
-    public function index($segment3 = null, $segment4 = null, $segment5 = null)
+    public function index($parent = null, $level = null)
+    {
+        if ($parent) {
+            $standar = $parent;
+        } else {
+            $standar = 0;
+        }
+
+        if ($level) {
+            $level_standar = $level;
+        } else {
+            $level_standar = 1;
+        }
+        $data = array(
+            'parent' => $standar,
+            'level' => $level_standar,
+            'session' => $this->session->all_userdata(),
+            'view' => 'standar_index'
+        );
+        $this->load->view('layout/master', $data);
+    }
+
+    public function ajax_get_standar($parent, $level)
+    {
+        $standar = $this->model_standar->query_get_standar($parent, $level);
+        $data['standar'] = $standar->result();
+        $this->load->view('content/tabel_standar', $data);
+    }
+
+    public function ajax_get_standar_by_id($id_standar)
+    {
+        $standar = $this->model_standar->query_get_standar_by_id($id_standar);
+        if ($standar) {
+            $json = array(
+                'status' => true,
+                'pesan' => 'Get data edit, berhasil',
+                'data' => $standar->row()
+            );
+        } else {
+            $json = array(
+                'status' => false,
+                'pesan' => 'Get data edit, gagal'
+            );
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($json));
+    }
+
+    public function ajax_simpan_standar()
+    {
+        $standar = $this->model_standar->query_simpan_standar();
+        if ($standar) {
+            $json = array(
+                'status' => true,
+                'pesan' => 'Simpan data standar, berhasil'
+            );
+        } else {
+            $json = array(
+                'status' => false,
+                'pesan' => 'Simpan data standar, gagal'
+            );
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($json));
+    }
+
+    public function ajax_update_standar()
+    {
+        $standar = $this->model_standar->query_update_standar();
+        if ($standar) {
+            $json = array(
+                'status' => true,
+                'pesan' => 'Update data standar, berhasil'
+            );
+        } else {
+            $json = array(
+                'status' => false,
+                'pesan' => 'Update data standar, gagal'
+            );
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($json));
+    }
+
+    public function ajax_hapus_standar($id_standar)
+    {
+        $standar = $this->model_standar->query_hapus_standar($id_standar);
+        if ($standar) {
+            $json = array(
+                'status' => true,
+                'pesan' => 'Hapus data standar, berhasil'
+            );
+        } else {
+            $json = array(
+                'status' => false,
+                'pesan' => 'Hapus data standar, gagal'
+            );
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($json));
+    }
+
+    private function index_temp($segment3 = null, $segment4 = null, $segment5 = null)
     {
         if ($segment3 != "" && $segment4 != "") {
             $view = 'standar_view_v3';
