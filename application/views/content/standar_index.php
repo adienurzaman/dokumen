@@ -74,13 +74,13 @@
     let parent = "<?= $parent; ?>";
     let level = "<?= $level; ?>";
     $(function() {
-        //tampilkan tabel
         form_tambah = $("#form-tambah");
         form_edit = $("#form-edit");
         modal_tambah = $("#modalAdd");
         modal_edit = $("#modalEdit");
 
-        tampil_tabel_standar(parent, level);
+        //tampilkan tabel
+        tampil_tabel_standar();
         //reset data modal ketika modal hide
         $(".modal").on('hide.bs.modal', function() {
             form_tambah[0].reset();
@@ -103,14 +103,16 @@
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        location.reload();
+                        // location.reload();
+                        tampil_tabel_standar();
                     } else {
                         toastr.warning(response.pesan + '. ', 'Informasi', {
                             "showMethod": "slideDown",
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        location.reload();
+                        // location.reload();
+                        tampil_tabel_standar();
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -139,14 +141,16 @@
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        location.reload();
+                        // location.reload();
+                        tampil_tabel_standar();
                     } else {
                         toastr.warning(response.pesan + '. ', 'Informasi', {
                             "showMethod": "slideDown",
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        location.reload();
+                        // location.reload();
+                        tampil_tabel_standar();
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -162,7 +166,7 @@
         //akhir tag jQuery;
     });
 
-    function tampil_tabel_standar(parent, level) {
+    function tampil_tabel_standar() {
         $.ajax({
             url: "<?= base_url('standar/ajax_get_standar/'); ?>" + parent + "/" + level,
             type: "GET",
@@ -233,14 +237,16 @@
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        location.reload();
+                        // location.reload();
+                        tampil_tabel_standar();
                     } else {
                         toastr.warning(response.pesan + '. ', 'Informasi', {
                             "showMethod": "slideDown",
                             "hideMethod": "slideUp",
                             timeOut: 2000
                         });
-                        location.reload();
+                        // location.reload();
+                        tampil_tabel_standar();
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
