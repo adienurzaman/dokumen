@@ -23,7 +23,13 @@ class Auth extends CI_Controller
     {
         if (isset($_GET['code'])) {
             $token = $this->google->fetchAccessTokenWithAuthCode($_GET['code']);
-            $this->session->set_userdata(array('token' => $token));
+            $gpInfo = $this->google->getUserInfo();
+            $this->session->set_userdata(array(
+                'token' => $token,
+                'email' => $gpInfo['email'],
+                'nama' => $gpInfo['given_name'].' '.$gpInfo['family_name'],
+                )
+            );
             redirect('dashboard');
         }
     }

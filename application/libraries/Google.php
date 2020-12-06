@@ -14,12 +14,18 @@ class Google
 			"https://www.googleapis.com/auth/drive.appdata",
 			"https://www.googleapis.com/auth/drive.apps.readonly",
 			"https://www.googleapis.com/auth/drive.metadata",
-			"https://www.googleapis.com/auth/drive.photos.readonly"
+			"https://www.googleapis.com/auth/drive.photos.readonly",
+			
+			"https://www.googleapis.com/auth/plus.login",
+			"https://www.googleapis.com/auth/plus.me",
+			"https://www.googleapis.com/auth/userinfo.email",
+			"https://www.googleapis.com/auth/userinfo.profile"
 		);
 		$this->client = new Google_Client();
 		$this->client->setAuthConfig(APPPATH . "libraries/oauth-credential.json");
 		$this->client->addScope($scope);
 		$this->service = new Google_Service_Drive($this->client);
+		$this->oauth2 = new Google_Service_Oauth2($this->client);
 		$this->file = new Google_Service_Drive_DriveFile();
 	}
 
@@ -46,6 +52,10 @@ class Google
 	public function isAccessTokenExpired()
 	{
 		return $this->client->isAccessTokenExpired();
+	}
+
+	public function getUserInfo() {
+		return $this->oauth2->userinfo->get();
 	}
 
 	public function file_set_name($nama_file)

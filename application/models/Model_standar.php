@@ -47,7 +47,12 @@ class Model_standar extends CI_Model
 
     public function query_hapus_standar($id_standar)
     {
-        return $this->db->delete('standar', array('id_standar' => $id_standar));
+        $query = $this->db->where('parent_standar', $id_standar)->get('standar')->num_rows();
+        if ($query > 0) {
+            return false;
+        } else {
+            return $this->db->delete('standar', array('id_standar' => $id_standar));
+        }
     }
 
     public function query_dt_default($parent, $level)

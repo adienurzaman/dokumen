@@ -112,7 +112,7 @@ class Standar extends CI_Controller
         } else {
             $json = array(
                 'status' => false,
-                'pesan' => 'Hapus data standar, gagal'
+                'pesan' => 'Hapus data standar gagal, standar ini sudah memiliki sub data standar, yang saling berkaitan'
             );
         }
         $this->output->set_content_type('application/json')->set_output(json_encode($json));

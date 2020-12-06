@@ -8,6 +8,9 @@ class Sesi extends CI_Controller
     {
         parent::__construct();
         $this->load->model('model_sesi');
+        if (!$this->session->userdata('token')) {
+            redirect('auth');
+        }
     }
 
     public function index()
